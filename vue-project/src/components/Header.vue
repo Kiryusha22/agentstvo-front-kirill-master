@@ -138,7 +138,6 @@ nav ul li button {
 .auth-reg p{
   color: white;
   display: flex;
-
 }
 
 </style>
