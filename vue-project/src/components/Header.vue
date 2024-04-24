@@ -1,22 +1,20 @@
 <template>
   <header>
     <nav>
-        <div class="logo">
-          <b>Домовой</b>
-        </div>
-        <div class="center-nav">
-          <ul>
-            <li><a href=""><router-link to="/">Главная</router-link></a></li>
-            <li><a href="#"><router-link to="/">О нас</router-link></a></li>
-            <li><a href="#"><router-link to="/">Контакты</router-link></a></li>
-          </ul>
-        </div>
-        <div class="auth-reg">
-          <ul>
-            <li><router-link to="/auth">Вход</router-link></li>
-            <li><router-link to="/auth">Регистрация</router-link></li>
-          </ul>
-        </div>
+      <div class="logo">
+        <b>Домовой</b>
+      </div>
+      <div class="center-nav">
+        <ul>
+          <li><a href=""><router-link to="/">Главная</router-link></a></li>
+          <li><a href="#"><router-link to="/">О нас</router-link></a></li>
+          <li><a href="#"><router-link to="/">Контакты</router-link></a></li>
+        </ul>
+      </div>
+      <div class="auth-reg">
+          <router-link class="vhod" to="/login">Вход</router-link>
+          <router-link to="/register">Регистрация</router-link>
+      </div>
     </nav>
   </header>
 </template>
@@ -92,7 +90,7 @@ nav {
 }
 
 
-.auth-reg ul {
+.auth-reg{
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -114,6 +112,7 @@ nav ul li a:hover,
 nav ul li button:hover {
   color: #ff6b6b;
 }
+
 nav ul li a,
 nav ul li button {
   color: white;
@@ -123,7 +122,6 @@ nav ul li button {
   background: none;
   cursor: pointer;
 }
-
 
 
 @media (max-width: 600px) {
@@ -136,9 +134,14 @@ nav ul li button {
     margin-top: 10px;
   }
 }
-.auth-reg p{
+
+.auth-reg  {
   color: white;
   display: flex;
+}
+
+.vhod {
+  padding-right: 20px;
 }
 
 </style>

@@ -1,3 +1,5 @@
+import {API_URL} from "@/config/index.js";
+
 export const makeRequest = async (
     path,
     method = 'GET',
@@ -11,4 +13,10 @@ export const makeRequest = async (
     if (! (body instanceof FormData)) {
         headers['Content-Type'] = 'application/json'
     }
+
+    return fetch(API_URL + path, {
+        body,
+        method,
+        headers
+    })
 }
