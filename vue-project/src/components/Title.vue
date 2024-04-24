@@ -6,7 +6,7 @@
   <main>
     <div class="container">
       <h1>Наша компания "Домовой" предоставит вам<br> личного риэлтора</h1>
-      <h3>Продадим ваше имущество или сдадим ваше быстро и по приятной цене</h3>
+      <h3>Продадим ваше имущество или сдадим быстро и по приятной цене</h3>
       <button class="more-info">
         Получить бесплатную консультацию
       </button>
@@ -17,7 +17,7 @@
 <style scoped>
 
 main {
-  background-image: url(../assets/images/modern-tokyo-street-background.png); /* Замените 'path_to_your_image.jpg' на путь к вашему фоновому изображению */
+  background-image: url(../assets/images/modern-tokyo-street-background.png);
   background-size: cover;
   background-position: center;
   height: 100vh; /* Высота main блока будет равна высоте экрана */
@@ -30,11 +30,11 @@ main {
 }
 
 .container {
-  color: white; /* Цвет текста */
+  color: white;
 }
 
 .more-info {
-  background-color: #ff6b6b; /* Стиль кнопки */
+  background-color: #ff6b6b;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -43,7 +43,7 @@ main {
 }
 
 .more-info:hover {
-  background-color: #ff6b2b; /* Изменение стиля при наведении */
+  background-color: #ff6b2b;
 }
 
 h1 {

@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logo">
-        <b>Домовой</b>
+        <a href="/">Домовой</a>
       </div>
       <div class="center-nav">
         <ul>
@@ -68,7 +68,7 @@ nav {
   font-size: 1.5em;
 }
 
-.logo b {
+.logo a {
   color: #ff6b6b;
 }
 
@@ -138,10 +138,14 @@ nav ul li button {
 .auth-reg  {
   color: white;
   display: flex;
+
 }
 
 .vhod {
   padding-right: 20px;
+}
+.auth-reg:hover {
+  color: #ff6b6b;
 }
 
 </style>

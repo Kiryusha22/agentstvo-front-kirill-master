@@ -1,4 +1,8 @@
 <template>
+  <div>
+    <h1>Отзывы наших клиентов</h1>
+    <h3>Что говорят о нас клиенты</h3>
+  </div>
   <div class="slider" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
     <div class="slides" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
       <div v-for="(slide, index) in slides" :key="index" class="slide">
