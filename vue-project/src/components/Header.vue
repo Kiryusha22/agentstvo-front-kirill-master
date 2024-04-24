@@ -13,8 +13,8 @@
         </div>
         <div class="auth-reg">
           <ul>
-            <li><router-link to="/auth"><p>Вход</p></router-link></li>
-            <li><router-link to="/auth"><p>Регистрация</p></router-link></li>
+            <li><router-link to="/auth">Вход</router-link></li>
+            <li><router-link to="/auth">Регистрация</router-link></li>
           </ul>
         </div>
     </nav>
@@ -123,6 +123,7 @@ nav ul li button {
   background: none;
   cursor: pointer;
 }
+
 
 
 @media (max-width: 600px) {
