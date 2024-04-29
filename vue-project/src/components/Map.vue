@@ -59,6 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: ;
 }
 p, h1{
   color: white;
