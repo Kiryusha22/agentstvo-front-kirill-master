@@ -1,2 +1,1 @@
-export class API_URL {
-}
+export const  API_URL = 'https://malinin-em.tepk-it.ru/public/api'
