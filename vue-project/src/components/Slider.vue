@@ -7,16 +7,19 @@
         <p>{{ slide.description }}</p>
       </div>
     </div>
-    <button @click="prevSlide" class="arrow-button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e30000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
+    <button @click="prevSlide" class="arrow-button left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </button> <!-- Стрелка влево -->
-    <button @click="nextSlide" class="arrow-button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e30000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <button @click="nextSlide" class="arrow-button right">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button> <!-- Стрелка вправо -->
+    <div class="indicators">
+      <div v-for="(slide, index) in slides" :key="index" class="indicator" :class="{ active: currentSlide === index }" @click="currentSlide = index"></div>
+    </div>
   </div>
 </template>
 
@@ -27,29 +30,29 @@ export default {
       currentSlide: 0,
       slides: [
         {
-          title: 'Слайд 1',
+
           description: 'Описание для слайда 1',
-          image: 'https://img.freepik.com/free-photo/the-adorable-illustration-of-kittens-playing-in-the-forest-generative-ai_260559-483.jpg?size=338&ext=jpg&ga=GA1.1.1413502914.1713657600&semt=ais'
+          image: 'https://ropshada.ru/wp-content/uploads/2021/06/image-41-1.png'
         },
         {
-          title: 'Слайд 2',
+
           description: 'Описание для слайда 2',
-          image: 'https://img.freepik.com/free-photo/the-adorable-illustration-of-kittens-playing-in-the-forest-generative-ai_260559-483.jpg?size=338&ext=jpg&ga=GA1.1.1413502914.1713657600&semt=ais'
+          image: 'https://cdn.riastatic.com/photosnewr/ria/news_common/luchshee-vremya-dlya-prodazhi-doma__173040-620x0.jpg'
         },
         {
-          title: 'Слайд 3',
+
           description: 'Описание для слайда 3',
-          image: 'https://preview.colorlib.com/theme/estate/img/developments/5.jpg'
+          image: 'https://images.cdn-cian.ru/images/dom-fominskoe-2-ya-fominskaya-ulica-2159612051-4.jpg'
         },
         {
-          title: 'Слайд 4',
+
           description: 'Описание для слайда 4',
-          image: 'https://preview.colorlib.com/theme/estate/img/developments/5.jpg'
+          image: 'https://img.dmclk.ru/c960x640q80/vitrina/owner/69/20/6920a60635db47b8b24d5b6a2763b702.jpg'
         },
         {
-          title: 'Слайд 5',
+
           description: 'Описание для слайда 5',
-          image: 'https://preview.colorlib.com/theme/estate/img/developments/5.jpg'
+          image: 'https://www.alfaplan.ru/upload/information_system_33/1/5/3/item_1534/information_items_property_182180.webp'
         },
       ],
       intervalId: null // идентификатор интервала
@@ -97,13 +100,13 @@ export default {
 
 .slides {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide {
   flex-shrink: 0;
   width: 100%;
-  height: 700px; /* Увеличим высоту слайда */
+  height: 700px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -114,11 +117,12 @@ export default {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .slide img {
   max-width: 100%;
-  max-height: 100%; /* Добавим максимальную высоту */
+  max-height: 100%;
   height: 400px;
   width: 400px;
 }
@@ -136,21 +140,52 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  border: none;
   cursor: pointer;
+  color: #e80000;
+  transition: color 0.3s ease;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.arrow-button:hover {
+  background-color: palevioletred;
+  color: white;
 }
 
 .arrow-button svg {
-  width: 40px; /* Установите желаемый размер для иконки */
+  width: 40px;
   height: 40px;
 }
 
-.arrow-button:first-of-type {
-  left: 200px;
+.arrow-button.left {
+  left: 100px;
 }
 
-.arrow-button:last-of-type {
-  right: 200px;
+.arrow-button.right {
+  right: 100px;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.indicator {
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: black;
 }
 </style>

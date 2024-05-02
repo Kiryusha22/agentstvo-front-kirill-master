@@ -8,7 +8,7 @@
         <p class="review-text">Компания отлично справилась с ремонтом моего дома. Рабочие были очень аккуратными и внимательными к деталям. Результат превзошел все мои ожидания!</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/1/1142.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -16,7 +16,7 @@
         <p class="review-text">Я обратился в эту компанию за помощью в разработке дизайна для моего нового дома. Дизайнеры проявили творческий подход и предложили множество интересных идей. В итоге, мой дом выглядит стильно и уютно.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/53/53106.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -24,7 +24,7 @@
         <p class="review-text">Отличное качество работы и высокий профессионализм сотрудников компании. Они справились с установкой системы отопления в моем доме в кратчайшие сроки и с минимальным количеством шума и беспорядка.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/53/53104.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -32,7 +32,7 @@
         <p class="review-text">Компания провела для меня энергоаудит дома. Рекомендации специалистов оказались очень полезными, и после внедрения их советов моя квартира стала намного энергоэффективнее.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/53/53154.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -40,7 +40,7 @@
         <p class="review-text">Я обратился в компанию "Домовой" за услугой по утеплению фасада моего дома. Работники компании справились с задачей быстро и качественно, теперь мой дом теплее и уютнее.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/79/79783.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -48,15 +48,15 @@
         <p class="review-text">Компания провела для меня реконструкцию кухни. Дизайнеры предложили множество интересных идей, а строители справились с работой на высшем уровне. Кухня теперь выглядит современно и функционально.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/634/634758.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
       <div class="review-content">
-        <p class="review-text">Я обратился в компанию "Домовой" за услугой по установке нового сайдинга на моем доме. Работники компании справились с задачей быстро и качественно, теперь мой дом выглядит аккуратно и привлекательно.</p>
+        <p class="review-text">Я обратилась в компанию "Домовой" за услугой по установке нового сайдинга на моем доме. Работники компании справились с задачей быстро и качественно, теперь мой дом выглядит аккуратно и привлекательно.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.freepik.com/512/53/53101.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
     <div class="review">
@@ -64,7 +64,7 @@
         <p class="review-text">Компания провела для меня ремонт ванной комнаты. Рабочие были очень аккуратными и внимательными к деталям, а результат превзошел все мои ожидания. Ванная комната теперь выглядит стильно и уютно.</p>
       </div>
       <div class="user-avatar-container">
-        <img src="../assets/images/scale_1200.jpg" alt="Аватар клиента 1" class="user-avatar">
+        <img src="https://cdn-icons-png.freepik.com/512/53/53133.png" alt="Аватар клиента 1" class="user-avatar">
       </div>
     </div>
   </div>
@@ -120,16 +120,5 @@
   object-fit: cover;
 }
 
-/* Закомментированное CSS-правило для удаления стрелочки
-.review::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid #f0f0f0;
-}
-*/
+
 </style>
