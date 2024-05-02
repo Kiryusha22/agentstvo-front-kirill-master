@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{ 'header-fixed': isHeaderFixed }">
     <nav>
       <div class="logo">
         <a href="/">Домовой</a>
@@ -7,46 +7,72 @@
       <div class="center-nav">
         <ul>
           <li><a href=""><router-link to="/">Главная</router-link></a></li>
-          <li><a href="#"><router-link to="/">О нас</router-link></a></li>
-          <li><a href="#"><router-link to="/">Контакты</router-link></a></li>
+          <RouterLink to="">О нас</RouterLink>
+          <li><a href=""><router-link to="">Контакты</router-link></a></li>
         </ul>
       </div>
       <div class="auth-reg">
-          <router-link class="vhod" to="/login">Вход</router-link>
-          <router-link to="/register">Регистрация</router-link>
+        <router-link class="vhod" to="/login">Вход</router-link>
+        <router-link to="/register">Регистрация</router-link>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   name: 'Header',
-  data() {
+  setup() {
+    const isHeaderFixed = ref(false);
+
+    const checkAuthentication = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      return !!user;
+    };
+
+    const logout = () => {
+      localStorage.removeItem('user');
+      this.$router.push('/');
+    };
+
+    const handleScroll = () => {
+      isHeaderFixed.value = window.scrollY > 0;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     return {
-      isLoggedIn: false,
-      hasLocalStorageUser: false,
+      isHeaderFixed,
+      checkAuthentication,
+      logout,
     };
   },
-  mounted() {
-    this.checkAuthentication();
-  },
-  methods: {
-    checkAuthentication() {
-      const user = JSON.parse(localStorage.getItem('user'));
-      this.hasLocalStorageUser = !!user;
-      this.isLoggedIn = this.hasLocalStorageUser; // или дополнительная проверка на сервере, если у вас таковая
-    },
-    logout() {
-      localStorage.removeItem('user');
-      this.isLoggedIn = false;
-      this.$router.push('/');
-    },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
 
 <style>
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 header {
   background-color: #333;
   color: #fff;
@@ -109,7 +135,7 @@ router-link {
 }
 
 nav ul li a:hover,
-nav ul li button:hover {
+nav ul :hover {
   color: #ff6b6b;
 }
 

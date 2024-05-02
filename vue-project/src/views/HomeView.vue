@@ -3,7 +3,7 @@
     <Title />
     <About />
     <HotLine/>
-    <Transfer />
+    <Transfer/>
     <Map/>
     <Reviews />
     <Slider />
