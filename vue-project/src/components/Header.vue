@@ -7,8 +7,7 @@
       <div class="center-nav">
         <ul>
           <li><a href=""><router-link to="/">Главная</router-link></a></li>
-          <RouterLink to="">О нас</RouterLink>
-          <li><a href=""><router-link to="">Контакты</router-link></a></li>
+          <li><router-link to="/real-estate">Недвижимость</router-link></li>
         </ul>
       </div>
       <div class="auth-reg">
@@ -148,7 +147,6 @@ nav ul li button {
   background: none;
   cursor: pointer;
 }
-
 
 @media (max-width: 600px) {
   nav {

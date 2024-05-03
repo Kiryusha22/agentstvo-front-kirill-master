@@ -3,6 +3,7 @@ import Home from '../views/HomeView.vue';
 import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import About from "@/components/About.vue";
+import RealEstate from "@/components/RealEstate.vue";
 
 
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView
+  },
+  {
+    path: '/real-estate', // Путь к странице с объявлениями о недвижимости
+    name: 'RealEstate',
+    component: RealEstate,
   },
 ];
 

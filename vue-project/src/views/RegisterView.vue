@@ -15,7 +15,7 @@
           placeholder="Введите имя"
           type="text"
           :value="inputData.name"
-          :error-message="errors.data?.name"
+          :error-message="errors.name"
           @change="(event) => onInputChange('name', event)"
       />
       <FormItem
@@ -24,7 +24,7 @@
           placeholder="Введите фамилию"
           type="text"
           :value="inputData.surname"
-          :error-message="errors.data?.surname"
+          :error-message="errors.surname"
           @change="(event) => onInputChange('surname', event)"
       />
       <FormItem
@@ -33,7 +33,7 @@
           placeholder="Введите отчество"
           type="text"
           :value="inputData.patronymic"
-          :error-message="errors.data?.patronymic"
+          :error-message="errors.patronymic"
           @change="(event) => onInputChange('patronymic', event)"
       />
       <FormItem
@@ -42,7 +42,7 @@
           placeholder="Введите номер телефона"
           type="text"
           :value="inputData.phone_number"
-          :error-message="errors.data?.phone_number"
+          :error-message="errors.phone_number"
           @change="(event) => onInputChange('phone_number', event)"
       />
       <Button class="button" @submit.prevent="onSubmit" type="submit">Зарегистрироваться</Button>
@@ -59,42 +59,57 @@ import router from "@/router/index.js";
 
 const selectedRole = ref('user'); // По умолчанию выбрана роль пользователя
 
-const inputData = {
+const inputData = ref({
   name: '',
   surname: '',
   patronymic: '',
   phone_number: '',
-};
+});
 
-const errors = {
-  data: {},
+const errors = ref({
+  name: [],
+  surname: [],
+  patronymic: [],
+  phone_number: [],
   message: ''
-};
+});
 
 const onSubmit = async () => {
-  errors.data = {};
+  errors.value = {
+    name: [],
+    surname: [],
+    patronymic: [],
+    phone_number: [],
+    message: ''
+  };
 
-  const data = await register({
-    name: inputData.name,
-    surname: inputData.surname,
-    patronymic: inputData.patronymic,
-    phone_number: inputData.phone_number,
-    role: selectedRole.value // Отправляем выбранную роль
-  });
+  try {
+    const data = await register({
+      name: inputData.value.name,
+      surname: inputData.value.surname,
+      patronymic: inputData.value.patronymic,
+      phone_number: inputData.value.phone_number,
+      role: selectedRole.value // Отправляем выбранную роль
+    });
 
-  if (data?.code === 422 || data?.code === 401) {
-    errors.data = data.errors;
-    return;
+    if (data?.code === 422 || data?.code === 401) {
+      errors.value = data.errors;
+      return;
+    }
+
+    await router.push({ name: 'login' });
+  } catch (error) {
+    console.error(error);
+    // Обработка ошибки, например, показ сообщения пользователю
+    errors.value.message = 'Произошла ошибка при регистрации. Пожалуйста, попробуйте еще раз.';
   }
-
-  await router.push({ name: 'login' });
 };
 
 const onInputChange = (field, event) => {
   const value = event.target.value;
-  errors.data[field] = [];
+  errors.value[field] = [];
 
-  inputData[field] = value;
+  inputData.value[field] = value;
 };
 </script>
 

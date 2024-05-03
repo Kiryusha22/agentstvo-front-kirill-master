@@ -1,1 +1,1 @@
-export const  API_URL = 'https://malinin-em.tepk-it.ru/public/api'
+export const  API_URL = 'http://malinin-em.tepk-it.ru/api'
