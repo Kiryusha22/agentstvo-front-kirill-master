@@ -21,7 +21,6 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
 }
 :root {
   --persik: #ff6b6b;

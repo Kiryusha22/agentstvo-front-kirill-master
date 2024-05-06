@@ -1,5 +1,5 @@
 import { makeRequest } from '@/api/makeRequest.js'
-export const register = async (name, surname, patronymic, login, password, email, birth, phone_number) => {
+export const register = async (name, surname, patronymic,phone_number) => {
     const response = await makeRequest(
         '/register',
         'POST',
@@ -7,10 +7,6 @@ export const register = async (name, surname, patronymic, login, password, email
             name,
             surname,
             patronymic,
-            login,
-            password,
-            email,
-            birth,
             phone_number
         })
     )

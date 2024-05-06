@@ -1,11 +1,10 @@
 import { makeRequest } from '@/api/makeRequest.js'
-export const login = async (login, password) => {
+export const login = async (phone_number) => {
     const response = await makeRequest(
         '/login',
         'POST',
         JSON.stringify({
-            login,
-            password
+            phone_number
         })
     )
     return response.json()

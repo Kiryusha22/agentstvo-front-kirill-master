@@ -59,7 +59,7 @@ defineProps({
   border-radius: 5px;
   padding: 10px 15px;
   outline: none;
-  border: 3px solid #7d2ae8;
+  border: 3px solid #333;
   background-color: white;
   color: black;
   width: 250px;

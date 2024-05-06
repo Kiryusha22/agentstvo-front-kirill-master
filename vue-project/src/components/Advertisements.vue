@@ -1,5 +1,5 @@
 <template>
-  <div class="advertisements">
+  <div class="container">
     <div class="cards-container">
       <div v-for="advertisement in filteredAdvertisements" :key="advertisement.id" class="advertisement">
         <h2>{{ advertisement.title }}</h2>
@@ -42,18 +42,11 @@ export default {
   margin-top: 20px;
 }
 
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .advertisement {
-  border: 1px solid #ccc;
+
   padding: 10px;
   margin: 10px;
-  max-width: 400px;
+  max-width: 1440px;
 }
 
 .advertisement h2 {

@@ -97,7 +97,7 @@ div{
   border: none;
   color: #fff;
   cursor: pointer;
-  background-color: #7d2ae8;
+  background-color: var(--persik);
   transition: all 0.2s ease;
 }
 
