@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: ;
+
 }
 p, h1{
   color: white;
@@ -94,6 +94,7 @@ p, h1{
   font-size: 1.1em;
   padding-bottom: 10px;
   padding-top: 10px;
+  text-align: center;
 }
 .social-img {
   flex-direction: row;

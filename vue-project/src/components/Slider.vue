@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="slider-container">
     <div class="ads">
       <h1>Лучшие предложения на рынке</h1>
     </div>

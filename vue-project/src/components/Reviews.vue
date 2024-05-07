@@ -74,6 +74,7 @@
 .container {
   padding-top: 50px;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 .reviews-container {

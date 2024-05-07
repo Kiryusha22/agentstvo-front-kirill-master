@@ -63,6 +63,7 @@ import Modal from "@/components/Modal.vue";
 import { ref } from "vue";
 import router from "@/router/index.js";
 import { register } from "@/api/methods/auth/register.js";
+import FormItem from "@/components/FormItem.vue";
 
 // Генерация случайного кода подтверждения
 const generateVerificationCode = () => {
@@ -106,14 +107,17 @@ const closeVerificationModal = () => {
 // Подтверждаем регистрацию
 const confirmRegistration = async () => {
   // Проверяем, правильный ли введен код подтверждения
+  console.log("Подтверждение кода:", verificationCode.value, "Сгенерированный код:", generatedCode);
   if (verificationCode.value === generatedCode) {
     try {
+      console.log("Отправка данных на сервер:", inputData.value);
       const data = await register({
         name: inputData.value.name,
         surname: inputData.value.surname,
         patronymic: inputData.value.patronymic,
         phone_number: inputData.value.phone_number
       });
+      console.log("Ответ сервера:", data);
       // ваш код дальнейших действий
     } catch (error) {
       console.error(error);
