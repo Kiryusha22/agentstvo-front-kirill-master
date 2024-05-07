@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1 class="reg">Регистрация</h1>
-    <Form :submit="onSubmit" method="POST">
+    <Form @submit="onSubmit" method="POST">
       <div class="div">
         <label for="role" class="role-label">Выберите роль:</label>
         <select id="role" v-model="selectedRole" class="role-select">
@@ -45,27 +45,40 @@
           :error-message="errors.phone_number"
           @change="(event) => onInputChange('phone_number', event)"
       />
-      <Button class="button" @submit.prevent="onSubmit" type="submit">Зарегистрироваться</Button>
+      <Button class="button" @click="showVerificationModal" type="button">Зарегистрироваться</Button>
     </Form>
+    <!-- Модальное окно для ввода кода подтверждения -->
+    <Modal v-if="showModal" @close="closeVerificationModal">
+      <h2>Подтверждение регистрации</h2>
+      <input v-model="verificationCode" placeholder="Введите код подтверждения" />
+      <span style="color: red;">{{ verificationError }}</span>
+      <button @click="confirmRegistration">Подтвердить</button>
+    </Modal>
   </main>
 </template>
 
 <script setup>
 import Form from "@/components/Form.vue";
-import FormItem from "@/components/FormItem.vue";
+import Modal from "@/components/Modal.vue";
 import { ref } from "vue";
-import { register } from "@/api/methods/auth/register.js";
 import router from "@/router/index.js";
+import { register } from "@/api/methods/auth/register.js";
 
-const selectedRole = ref('user'); // По умолчанию выбрана роль пользователя
+// Генерация случайного кода подтверждения
+const generateVerificationCode = () => {
+  return Math.random().toString(36).substring(2, 8);
+};
 
+const generatedCode = generateVerificationCode();
+
+// Объявление реактивных переменных и методов
+const selectedRole = ref('user');
 const inputData = ref({
   name: '',
   surname: '',
   patronymic: '',
   phone_number: '',
 });
-
 const errors = ref({
   name: [],
   surname: [],
@@ -74,6 +87,45 @@ const errors = ref({
   message: ''
 });
 
+// Добавляем состояние и методы для кода подтверждения
+const showModal = ref(false);
+const verificationCode = ref('');
+const verificationError = ref('');
+
+// Показываем модальное окно для ввода кода подтверждения
+const showVerificationModal = () => {
+  showModal.value = true;
+};
+
+// Закрываем модальное окно для ввода кода подтверждения
+const closeVerificationModal = () => {
+  showModal.value = false;
+  verificationCode.value = '';
+};
+
+// Подтверждаем регистрацию
+const confirmRegistration = async () => {
+  // Проверяем, правильный ли введен код подтверждения
+  if (verificationCode.value === generatedCode) {
+    try {
+      const data = await register({
+        name: inputData.value.name,
+        surname: inputData.value.surname,
+        patronymic: inputData.value.patronymic,
+        phone_number: inputData.value.phone_number
+      });
+      // ваш код дальнейших действий
+    } catch (error) {
+      console.error(error);
+      errors.value.message = 'Произошла ошибка при регистрации. Пожалуйста, попробуйте еще раз.';
+    }
+  } else {
+    verificationError.value = 'Неправильный код подтверждения';
+  }
+  closeVerificationModal();
+};
+
+// Обработчик сабмита формы
 const onSubmit = async () => {
   errors.value = {
     name: [],
@@ -82,6 +134,12 @@ const onSubmit = async () => {
     phone_number: [],
     message: ''
   };
+
+  // Проверяем, правильный ли введен код подтверждения
+  if (verificationCode.value !== generatedCode) {
+    verificationError.value = 'Неправильный код подтверждения';
+    return;
+  }
 
   try {
     const data = await register({
@@ -105,6 +163,7 @@ const onSubmit = async () => {
   }
 };
 
+// Обновляем значения полей ввода при изменении
 const onInputChange = (field, event) => {
   const value = event.target.value;
   errors.value[field] = [];
@@ -112,6 +171,7 @@ const onInputChange = (field, event) => {
   inputData.value[field] = value;
 };
 </script>
+
 
 <style scoped>
 .reg {

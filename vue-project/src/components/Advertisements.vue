@@ -3,7 +3,7 @@
     <div class="cards-container">
       <div v-for="advertisement in filteredAdvertisements" :key="advertisement.id" class="advertisement">
         <h2>{{ advertisement.title }}</h2>
-        <img :src="advertisement.photo" alt="Фотография недвижимости" class="photo">
+        <img :src="advertisement.photos" alt="Фотография недвижимости" class="photo">
         <p>{{ advertisement.description }}</p>
         <p class="price">Цена: {{ advertisement.price }}</p>
         <p class="location">Расположение: {{ advertisement.location }}</p>
@@ -36,14 +36,7 @@ export default {
 </script>
 
 <style scoped>
-
-
-.advertisements {
-  margin-top: 20px;
-}
-
 .advertisement {
-
   padding: 10px;
   margin: 10px;
   max-width: 1440px;
