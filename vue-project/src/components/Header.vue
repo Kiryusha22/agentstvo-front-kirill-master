@@ -6,8 +6,9 @@
       </div>
       <div class="center-nav">
         <ul>
-          <li><a href=""><router-link to="/">Главная</router-link></a></li>
+          <li><router-link to="/">Главная</router-link></li>
           <li><router-link to="/real-estate">Недвижимость</router-link></li>
+          <router-link class="profile" to="/profile">Личный профиль</router-link>
         </ul>
       </div>
       <div class="auth-reg">
@@ -77,8 +78,6 @@ header {
   color: #fff;
   padding: 20px 0;
 }
-
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -171,5 +170,6 @@ nav ul li button {
 .auth-reg:hover {
   color: #ff6b6b;
 }
+
 
 </style>

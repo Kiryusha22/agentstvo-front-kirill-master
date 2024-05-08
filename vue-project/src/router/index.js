@@ -4,6 +4,8 @@ import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import About from "@/components/About.vue";
 import RealEstate from "@/components/RealEstate.vue";
+import Personal_profile from "@/views/Personal_profile.vue";
+import Favorites from "@/components/Favorites.vue";
 
 
 const routes = [
@@ -32,6 +34,15 @@ const routes = [
     name: 'RealEstate',
     component: RealEstate,
   },
+  {
+    path: '/profile',
+    component: Personal_profile
+  },
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: Favorites
+  }
 ];
 
 const router = createRouter({

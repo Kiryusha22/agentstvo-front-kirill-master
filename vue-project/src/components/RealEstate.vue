@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title-ads">Объявления о недвижимости</h1>
+    <h1 class="title-ads">🏡 Объявления о недвижимости</h1>
     <div class="card-grid">
       <div v-for="(advertisement, index) in ads" :key="advertisement.id" class="card-house">
         <div class="card">
@@ -13,7 +13,7 @@
           </div>
           <div class="main-info">
             <div class="info-section" v-if="advertisement.address">
-              <h3 class="card-title">Адрес:</h3>
+              <h3 class="card-title">📍 Адрес:</h3>
               <p v-if="advertisement.address.city">
                 Город: <strong>{{ advertisement.address.city.name }}</strong>
               </p>
@@ -31,19 +31,19 @@
             </div>
 
             <div class="info-section">
-              <h3 class="card-title">Тип недвижимости:</h3>
+              <h3 class="card-title">🏠 Тип недвижимости:</h3>
               <p>{{ advertisement.type.name }}</p>
               <p v-if="advertisement.type.is_commercial" class="text-success">Коммерческая недвижимость</p>
               <p v-else class="text-primary">Жилая недвижимость</p>
             </div>
 
             <div class="info-section">
-              <h3 class="card-title">Тип транзакции:</h3>
+              <h3 class="card-title">💼 Тип транзакции:</h3>
               <p>{{ advertisement.transaction_type }}</p>
             </div>
 
             <div class="info-section" v-if="advertisement.detailed">
-              <h3 class="card-title">Детали:</h3>
+              <h3 class="card-title">📐 Детали:</h3>
               <p>Площадь: <strong>{{ advertisement.detailed.area }} {{ advertisement.detailed.measurement_type }}</strong></p>
               <p>Количество комнат: <strong>{{ advertisement.detailed.count_rooms }}</strong></p>
             </div>
@@ -51,6 +51,7 @@
         </div>
       </div>
     </div>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -61,17 +62,18 @@ export default {
   data() {
     return {
       ads: [],
-      errorMessage: '' // Добавлено новое свойство для отображения сообщения об ошибке
+      errorMessage: ''
     };
   },
   methods: {
     async handleFileUpload(event, index) {
       try {
-        const file = event.target.files[0]; // Получаем первый загруженный файл
-        const formData = new FormData(); // Создаем объект FormData для передачи файла на сервер
-        formData.append('image', file); // Добавляем файл в FormData под ключом 'image'
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('image', file);
 
-        const response = await fetch('/upload/image', {
+        const serverURL = 'http://localhost:5173/upload/image'; // Условный адрес сервера
+        const response = await fetch(serverURL, {
           method: 'POST',
           body: formData
         });
@@ -80,9 +82,10 @@ export default {
           throw new Error('Ошибка при загрузке изображения');
         }
 
-        const data = await response.json(); // Парсим JSON ответ
-        this.ads[index].photoURL = data.imageUrl; // Устанавливаем URL изображения в объявлении
-        this.saveAdsToLocalStorage(); // Сохраняем изменения в локальном хранилище
+        const data = await response.json();
+        this.ads[index].photoURL = data.imageUrl;
+        this.saveAdsToLocalStorage();
+        this.$forceUpdate();
       } catch (error) {
         console.error('Ошибка при загрузке изображения:', error.message);
         this.errorMessage = 'Ошибка при загрузке изображения: ' + error.message;
@@ -100,7 +103,6 @@ export default {
     async fetchAdvertisements() {
       try {
         const response = await makeRequest('/advertisement/search');
-        console.log('Ответ сервера:', response);
         if (!response || !response.advertisements || response.advertisements.length === 0) {
           throw new Error('Отсутствуют объявления');
         }
@@ -118,6 +120,7 @@ export default {
   }
 };
 </script>
+
 
 
 <style scoped>
@@ -190,6 +193,14 @@ export default {
 }
 .text-primary {
   color: #333;
+}
+.text-success {
+  color: #28a745;
+}
+.error-message {
+  color: #dc3545;
+  text-align: center;
+  margin-top: 20px;
 }
 strong {
   font-weight: bold;
