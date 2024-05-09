@@ -9,7 +9,6 @@
           <li><router-link to="/">Главная</router-link></li>
           <li><router-link to="/real-estate">Недвижимость</router-link></li>
           <router-link class="profile" to="/profile">Личный профиль</router-link>
-          <router-link class="user" to="/user">Список пользователей</router-link>
         </ul>
       </div>
       <div class="auth-reg">

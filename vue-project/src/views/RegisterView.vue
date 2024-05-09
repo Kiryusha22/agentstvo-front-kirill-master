@@ -55,6 +55,7 @@
       <button @click="confirmRegistration">Подтвердить</button>
     </Modal>
   </main>
+
 </template>
 
 <script setup>
@@ -64,6 +65,7 @@ import { ref } from "vue";
 import router from "@/router/index.js";
 import { register } from "@/api/methods/auth/register.js";
 import FormItem from "@/components/FormItem.vue";
+import Footer from "@/components/Footer.vue";
 
 // Генерация случайного кода подтверждения
 const generateVerificationCode = () => {

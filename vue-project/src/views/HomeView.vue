@@ -7,6 +7,7 @@
     <Map/>
     <Reviews />
     <Slider />
+    <Footer />
   </div>
 </template>
 
@@ -18,11 +19,13 @@ import HotLine from "@/components/HotLine.vue";
 import Transfer from "@/components/Transfer.vue";
 import Map from "@/components/Map.vue";
 import Reviews from "@/components/Reviews.vue";
+import Footer from "@/components/Footer.vue";
 
 
 export default {
   name: 'Home',
   components: {
+    Footer,
     Reviews,
     Map,
     HotLine,

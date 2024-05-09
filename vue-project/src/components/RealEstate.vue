@@ -53,12 +53,15 @@
     </div>
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
+  <Footer />
 </template>
 
 <script>
 import { makeRequest } from "@/api/makeRequest.js";
+import Footer from "@/components/Footer.vue";
 
 export default {
+  components: {Footer},
   data() {
     return {
       ads: [],

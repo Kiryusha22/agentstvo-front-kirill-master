@@ -43,7 +43,7 @@
           <label for="image" class="form-label">Изображение URL:</label>
           <input type="text" id="image" v-model="newAd.image" class="form-input" required>
         </div>
-        <button type="submit" class="form-button">Разместить объявление</button>
+          <button type="submit" class="form-button">Разместить объявление</button>
       </form>
     </div>
   </div>
@@ -146,21 +146,29 @@ export default {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .form-title {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
+  text-align: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .form-group {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-label {
@@ -170,7 +178,7 @@ export default {
 
 .form-input,
 .form-textarea {
-  width: 100%;
+  width: 800px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -183,7 +191,8 @@ export default {
 }
 
 .form-button {
-  width: 100%;
+  text-align: center;
+  width: 800px;
   padding: 10px;
   background-color: #007bff;
   color: #fff;

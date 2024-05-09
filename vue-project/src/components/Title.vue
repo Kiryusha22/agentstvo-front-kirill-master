@@ -8,7 +8,7 @@
       <div v-if="showModal" class="modal">
         <div class="modal-content">
           <span class="close" @click="closePhoneNumberModal">&times;</span>
-          <p>Номер телефона для консультации: 89138641734</p>
+          <p>Номер телефона для консультации: 8932489324821</p>
         </div>
       </div>
     </div>

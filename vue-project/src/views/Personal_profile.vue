@@ -19,12 +19,15 @@
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script>
 import { ref } from 'vue';
+import Footer from "@/components/Footer.vue";
 
 export default {
+  components: {Footer},
   setup() {
     const user = ref({
       photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST91PHlPmNzZvst2rrEmr0AP4rCqwa2Hu1i3V9Z0nx7A&s',

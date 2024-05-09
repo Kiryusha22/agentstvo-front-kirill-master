@@ -27,6 +27,7 @@
       </template>
     </Form>
   </main>
+
 </template>
 
 <script setup>
@@ -36,6 +37,7 @@ import { reactive, ref } from "vue";
 import { login } from "@/api/methods/auth/login.js";
 import router from "@/router/index.js";
 import { useAuthStore } from "@/stores/auth.js";
+import Footer from "@/components/Footer.vue";
 
 const { setToken } = useAuthStore();
 

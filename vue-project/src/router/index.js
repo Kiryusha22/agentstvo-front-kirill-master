@@ -6,7 +6,7 @@ import About from "@/components/About.vue";
 import RealEstate from "@/components/RealEstate.vue";
 import Personal_profile from "@/views/Personal_profile.vue";
 import Favorites from "@/components/Favorites.vue";
-import User from "@/components/User.vue";
+
 
 
 const routes = [
@@ -44,11 +44,6 @@ const routes = [
     name: 'Favorites',
     component: Favorites
   },
-  {
-    path: '/user',
-    name: 'User',
-    component: User
-  }
 ];
 
 const router = createRouter({
